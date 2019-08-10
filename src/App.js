@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
 
 
       <Route path="/" component={Home} exact />
-      <Route path="/products" component={Products} />
+      <Route path="/products" component={Products} exact/>
+      <Route path="/products/:id" component={Product} />
       <Route path="/cart" component={Cart} />
 
     </div>
