@@ -5,6 +5,7 @@ export default class Product extends React.Component{
 
     state={
         loading: true,
+        quantity: 0,
         product: {}
     };
 
@@ -20,11 +21,23 @@ export default class Product extends React.Component{
             })
     }
 
+    handleQuantity = (event) => {
+        const value = event.target.value;
+
+        if(value < 0)
+            return ;
+
+        this.setState({
+            quantity: value
+        })
+    }
+
     render(){
         if(this.state.loading)
             return 'Loading ..';
 
         const product = this.state.product;
+        const quantity = this.state.quantity;
 
         return (
             <div>
@@ -39,11 +52,12 @@ export default class Product extends React.Component{
 
                         <p>{product.description}</p>
 
-                        <br/><br/>
 
-                        <input type="number" />
+                        <input type="number" value={quantity} onChange={this.handleQuantity} />
                         
                         <br /><br />
+
+                        <p>Total: {quantity * product.price}</p>
 
                         <button className="btn btn-primary">
                             Add to Cart
