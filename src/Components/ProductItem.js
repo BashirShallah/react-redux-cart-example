@@ -1,16 +1,20 @@
 import React from "react";
 
-export default function ProductItem(){
+export default function ProductItem(props){
+    const {product} = props;
+
     return (
         <div className="card">
-            <img src={'/imgs/1.jpg'} className="card-img-top" alt="..." />
+            <img src={product.image} className="card-img-top" alt="..." />
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
+                <h5 className="card-title">
+                    {product.name}
+                </h5>
                 <p className="card-text">
-                    Price 100$
+                    Price {product.price}$
                 </p>
                 
-                <a href="#" className="btn btn-primary">Details</a>
+                <a href={"/products/" + product.id} className="btn btn-primary">Details</a>
             </div>
         </div>
     );
