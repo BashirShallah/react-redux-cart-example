@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import CartIcon from "./Components/CartIcon";
+import {Provider} from "react-redux";
+import store from "./store/store";
 
 // Pages
 import Home from "./pages/Home";
@@ -46,4 +48,10 @@ function App() {
   );
 }
 
-export default App;
+function AppWithStore(){
+  return <Provider store={store}>
+    <App />
+  </Provider>
+}
+
+export default AppWithStore;

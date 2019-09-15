@@ -35,7 +35,7 @@ export default class Cart extends React.Component{
                     Total: 3000
                 </h3>
 
-                <button class="btn btn-primary btn-block">Pay</button>
+                <button className="btn btn-primary btn-block">Pay</button>
             </div>
         );
     }
