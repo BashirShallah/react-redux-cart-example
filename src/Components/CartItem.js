@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function ProductItem(props){
-    const {product} = props;
+    const {item} = props;
+    const {product} = item;
 
     return (
         <div className="card">
@@ -13,9 +14,9 @@ export default function ProductItem(props){
                 <p className="card-text">
                     Price {product.price}$
                     <br />
-                    Quantity: 1
+                    Quantity: {item.quantity}
                     <br />
-                    Total: {product.price}
+                    Total: {item.quantity * product.price}
                 </p>
                 <a href="#" className="btn btn-danger">
                     <i className="fa fa-trash"></i> Delete
