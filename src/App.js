@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CartIcon from "./Components/CartIcon";
 
 // Pages
 import Home from "./pages/Home";
@@ -30,6 +31,8 @@ function App() {
             </li>
           </ul>
         </div>
+
+        <CartIcon />
       </nav>
 
 

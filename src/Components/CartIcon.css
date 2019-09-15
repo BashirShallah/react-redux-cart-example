@@ -1,0 +1,9 @@
+#cart-icon i {
+    font-size: 24px;
+}
+
+#cart-icon span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
