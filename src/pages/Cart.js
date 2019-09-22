@@ -30,6 +30,7 @@ class Cart extends React.Component{
 
 
 const mapStateToProps = (state) => {
+    console.log({state})
     return {
         cartItems: state.cart,
         total: state.cart.reduce((total, item) => total + item.quantity * item.product.price, 0),
