@@ -1,7 +1,9 @@
 import React from "react";
 import {getById} from "../api/products";
+import {addToCart} from "../store/actions/actions";
+import {connect} from "react-redux";
 
-export default class Product extends React.Component{
+class Product extends React.Component{
 
     state={
         loading: true,
@@ -32,6 +34,10 @@ export default class Product extends React.Component{
         })
     }
 
+    addToCart = (product) => {
+        this.props.addToCart(product, this.state.quantity);
+    }
+
     render(){
         if(this.state.loading)
             return 'Loading ..';
@@ -59,7 +65,7 @@ export default class Product extends React.Component{
 
                         <p>Total: {quantity * product.price}</p>
 
-                        <button className="btn btn-primary">
+                        <button className="btn btn-primary" onClick={() => this.addToCart(product)}>
                             Add to Cart
                         </button>
 
@@ -69,3 +75,12 @@ export default class Product extends React.Component{
         );
     }
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (productsInfo, quantity) => dispatch(addToCart(productsInfo, quantity)),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Product);
