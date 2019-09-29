@@ -2,8 +2,17 @@ import React from "react";
 import CartItem from "../Components/CartItem";
 import ProductsApi from "../api/products";
 import {connect} from "react-redux";
+import {clearCart} from "../store/actions/actions";
 
 class Cart extends React.Component{
+
+    placeOrder = () => {
+        // send the request to the server
+        // clear cart
+        this.props.clearCart();
+        alert('We recieved your order, and we are working on it.');
+    };
+
     render(){
         return (
             <div>
@@ -22,7 +31,7 @@ class Cart extends React.Component{
                     Total: {this.props.total}
                 </h3>
 
-                <button className="btn btn-primary btn-block">Pay</button>
+                <button className="btn btn-primary btn-block" onClick={this.placeOrder}>Place order</button>
             </div>
         );
     }
@@ -36,4 +45,10 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        clearCart: () => dispatch(clearCart()),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

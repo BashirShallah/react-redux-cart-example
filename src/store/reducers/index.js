@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/types";
+import { ADD_TO_CART, REMOVE_FROM_CART, CLEAR_CART } from "../actions/types";
 
 export default function cartReduer(state, action){
 
@@ -19,6 +19,12 @@ export default function cartReduer(state, action){
             const item_index = action.index;
             const new_state = {...state};
             delete new_state.cart[item_index];
+            return new_state;
+        }
+
+        case CLEAR_CART: {
+            const new_state = {...state};
+            new_state.cart = [];
             return new_state;
         }
 
