@@ -8,11 +8,17 @@ export function addToCart(productInfo, quantity){
     }
 }
 
-export function removeFromCart(index){
+export function createRemoveFromCartAction(index){
     return {
         type: REMOVE_FROM_CART,
         index
     }
+}
+
+export function removeFromCart(index){
+    return (dispatch) => {
+        dispatch(createRemoveFromCartAction(index));
+    };
 }
 
 export function clearCart(){
